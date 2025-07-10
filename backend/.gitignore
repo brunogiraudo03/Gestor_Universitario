@@ -1,0 +1,3 @@
+// archivos para no subir a git
+node_modules
+db.sqlite
