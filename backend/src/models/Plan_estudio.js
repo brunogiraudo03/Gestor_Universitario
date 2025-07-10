@@ -2,31 +2,39 @@ import { DataTypes } from 'sequelize'; // corregido: se escribe con mayúscula l
 
 // Definimos los atributos del modelo Plan_estudio
 const planAtributtes = {
-  año: {
-    type: DataTypes.INTEGER,           // Tipo entero
-    primaryKey: true                   // Parte de la clave primaria compuesta
-  },
   nro_materia: {
     type: DataTypes.INTEGER,           // Otro entero
-    primaryKey: true                   // Clave primaria compuesta (junto con año)
+    primaryKey: true                   
+  },
+  año: {
+    type: DataTypes.INTEGER,           // Tipo entero
+    allowNull: false
   },
   nombre: {
-    type: DataTypes.TEXT,              // Texto largo (por ejemplo: "Matemática Discreta")
+    type: DataTypes.TEXT,    // Texto largo (por ejemplo: "Matemática Discreta")
+    allowNull: false
   },
   modalidad: {
     type: DataTypes.TEXT,              // Texto: puede ser "Presencial", "Virtual", etc.
+    allowNull: false
   },
   regulares: {
     type: DataTypes.TEXT,              // Podés usar esto para guardar materias correlativas regularizadas
+    //  permite nulos
+    allowNull: true
   },
   aprobadas: {
     type: DataTypes.TEXT,              // Lo mismo, pero para correlativas aprobadas
+    //  permite nulos
+    allowNull: true
   },
   carga_horaria: {
     type: DataTypes.INTEGER,           // Total de horas de la materia (ej: 64)
   },
   nota: {
     type: DataTypes.INTEGER,           // Nota final (puede ser null si no está rendida)
+    //  permite nulos
+    allowNull: true
   }
 };
 
