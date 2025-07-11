@@ -1,3 +1,4 @@
+
 import { DataTypes } from 'sequelize'; // corregido: se escribe con mayúscula la D
 
 // Definimos los atributos del modelo Plan_estudio

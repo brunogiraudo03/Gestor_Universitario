@@ -1,4 +1,5 @@
 import sequelize from '../databases/databases.js';
+import { Op } from 'sequelize';
 
 //obtener todo el plan de estudio
 const getAll = async () => {
@@ -9,8 +10,8 @@ const getAll = async () => {
 //crear plan de estudio
 const createPlan = async (body) => {
     const newPlan = await sequelize.models.plan_estudio.create({
-        año: body.año,
         nro_materia: body.nro_materia,
+        año: body.año,
         nombre: body.nombre,
         modalidad: body.modalidad,
         regulares: body.regulares,
@@ -48,11 +49,25 @@ const updatePlan = async (id, body) => {
 }
 
 
+const getByMateria = async (nombre) => {
+    let where = {};
+
+    if (nombre) {
+        where.nombre = { [Op.like]: `%${nombre}%` };
+    }
+
+    const plan = await sequelize.models.plan_estudio.findAll({ where });
+    return plan.map(p => p.dataValues);
+};
+
+
+
 const planService = {
     getAll,
     createPlan,
     deletePlan,
-    updatePlan
+    updatePlan,
+    getByMateria
 }
 
 export { planService };

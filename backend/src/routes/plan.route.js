@@ -2,6 +2,7 @@
 import express from 'express';
 import { planService } from '../services/plan.service.js';
 
+
 const router = express.Router();
 
 // Obtener todos los planes de estudio
@@ -10,10 +11,10 @@ router.get('/obtener', async (req, res) => {
         const plan = await planService.getAll();
         res.status(200).json(plan);
     } catch (error) {
-        console.error(error);
         res.status(500).json({ error: 'Error al obtener todos los planes de estudio' });
     }
-});
+})
+
 
 // Crear un plan de estudio
 router.post('/crear', async (req, res) => {
@@ -42,6 +43,15 @@ router.put('/actualizar/:id', async (req, res) => {
         res.status(200).json(result);
     } catch (error) {
         res.status(500).json({ error: 'Error al actualizar un plan de estudio' });
+    }
+});
+
+router.get('/buscar/:nombre', async (req, res) => {
+    try {
+        const plan = await planService.getByMateria(req.params.nombre);
+        res.status(200).json(plan);
+    } catch (error) {
+        res.status(500).json({ error: 'Error al buscar un plan de estudio' });
     }
 });
 
