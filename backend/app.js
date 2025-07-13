@@ -17,5 +17,6 @@ const corsOptions = {
 // Esto es necesario para que tu frontend (por ejemplo, hecho con Vite) pueda comunicarse con este backend sin ser bloqueado
 app.use(cors(corsOptions));
 
+
 // Exporta la instancia de Express para poder usarla en otro archivo (como index.js)
 export default app;

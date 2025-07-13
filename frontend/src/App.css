@@ -1,42 +1,26 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+/* src/App.css */
+
+.app-container {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Columna fija para sidebar, el resto para contenido */
+  grid-template-rows: auto 1fr;     /* Fila para header, el resto para el contenido y sidebar */
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  height: 100vh;
+  overflow: hidden; /* Evita el scroll en la página completa */
+}
+
+/* AQUÍ ESTÁ LA MAGIA: le damos el fondo negro al contenedor */
+.sidebar-container {
+  grid-area: sidebar;
+  background-color: var(--color-sidebar-bg); /* Usa la variable de color negro */
+  overflow-y: auto; /* Permite scroll solo en la sidebar si el contenido es largo */
+}
+
+.main-content {
+  grid-area: main;
+  overflow-y: auto; /* Permite scroll solo en el contenido principal */
   padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  background-color: var(--color-body-bg); /* Fondo del contenido principal */
 }

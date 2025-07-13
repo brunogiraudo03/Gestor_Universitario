@@ -1,0 +1,21 @@
+/* src/pages/HomePage/HomePage.css */
+
+/* Estilo base para la tarjeta de navegación */
+.nav-card {
+  text-decoration: none; /* Quita el subrayado del link */
+  color: inherit; /* Hereda el color de texto normal */
+  display: block; /* Hace que el link ocupe todo el espacio de la tarjeta */
+  transition: all 0.3s ease-in-out; /* Suaviza la animación */
+}
+
+/* El efecto al pasar el mouse por encima */
+.nav-card:hover {
+  transform: translateY(-8px); /* Levanta la tarjeta un poco */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* Añade una sombra más pronunciada */
+}
+
+/* Estilo para el ícono dentro de la tarjeta */
+.nav-card .card-icon {
+  font-size: 3rem; /* Hace el ícono grande */
+  color: var(--color-header-bg); /* Usa el color rojo del header */
+}

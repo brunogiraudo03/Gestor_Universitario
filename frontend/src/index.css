@@ -1,68 +1,36 @@
+/* src/index.css */
+
+/* 1. Importamos una fuente profesional desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* 2. Definimos la nueva paleta de colores como variables CSS */
+/* src/index.css */
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-header-bg: #c82333;
+  --color-sidebar-bg: #000000;      /* Negro absoluto para la sidebar */
+  --color-body-bg: #3d3d3d;       
+  --color-card-bg: #5c5c5c;       /* Un gris muy claro para el fondo de la tarjeta */
+  --color-texto-blanco: #ffffff;
+  --color-texto-negro: #212529;
+  --font-principal: 'Poppins', sans-serif;
 }
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* 3. Aplicamos los estilos base */
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  font-family: var(--font-principal);
+  background-color: var(--color-body-bg);
+  color: var(--color-texto-blanco);
+  font-size: 15px; /* Ajustamos el tamaño base de la fuente */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* 4. Estructura general de la app */
+.app-container {
+  display: grid;
+  grid-template-columns: 260px 1fr; /* Columna fija para sidebar, el resto para el contenido */
+  grid-template-rows: auto 1fr auto; /* Header, contenido, footer */
+  grid-template-areas:
+    "header header"
+    "sidebar main"
+    "sidebar footer";
+  height: 100vh;
 }

@@ -1,0 +1,21 @@
+/* src/styles/custom.scss */
+
+// 1. Define tus colores personalizados
+// Aquí puedes poner los colores que quieras. Usemos un gris como pediste.
+$mi-gris-oscuro: #495057;
+$mi-gris-claro:  #6c757d;
+
+// 2. Sobrescribe las variables de color de Bootstrap ANTES de importarlo
+// Le decimos a Bootstrap: "Oye, a partir de ahora, tu color 'primary' será mi gris oscuro".
+$primary:       $mi-gris-oscuro;
+$secondary:     $mi-gris-claro;
+// La variable $body-bg cambia el color de fondo de toda la página
+$body-bg:       #f8f9fa;
+
+// Puedes cambiar cualquier color. Por ejemplo, el rojo de "danger".
+// $danger: #e63946;
+
+// 3. Importa el resto de los estilos de Bootstrap
+// Esta línea es mágica: toma todas tus variables personalizadas y construye
+// un archivo CSS de Bootstrap completamente nuevo y a tu medida.
+@import 'bootstrap/scss/bootstrap';

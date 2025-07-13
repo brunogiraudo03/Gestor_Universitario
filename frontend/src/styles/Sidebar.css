@@ -1,0 +1,30 @@
+/* src/components/Sidebar.css */
+
+.sidebar .nav-link {
+  /* Aumentamos la opacidad para que el texto se vea siempre */
+  color: rgba(255, 255, 255, 0.8); 
+  transition: all 0.2s ease;
+  padding: .75rem 1rem;
+  border-radius: .25rem;
+  font-weight: 500; /* Hacemos la letra un poco más gruesa */
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.sidebar .nav-link.active {
+  background-color: var(--color-header-bg);
+  color: white;
+  font-weight: 700; /* Hacemos el link activo más notorio */
+}
+
+.sidebar .nav-link.disabled {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.sidebar .body {
+  background-color: var(--color-sidebar-bg);
+  color: black
+}
