@@ -2,8 +2,7 @@
 
 Un dashboard web moderno y funcional diseñado para ayudar a los estudiantes universitarios a organizar su carrera, monitorear su progreso y gestionar sus tareas académicas de manera eficiente.
 
-![Screenshot del Proyecto](https://i.imgur.com/lO7Xb8B.png) 
-*(Sugerencia: Reemplaza esta URL con una captura de pantalla actualizada de tu proyecto)*
+<img width="1316" height="652" alt="image" src="https://github.com/user-attachments/assets/257f4508-cfdb-4bae-bf9e-8ce5e0cc3335" />
 
 ---
 
@@ -66,6 +65,6 @@ Para correr este proyecto de forma local, sigue estos pasos:
 
 ## Contacto
 
-Bruno Giraudo - [Tu Perfil de LinkedIn o Twitter] - tu.email@ejemplo.com
+Bruno Giraudo - Brunousain03@gmail.com
 
 Link del Proyecto: [https://github.com/brunogiraudo03/Gestor_Universitario](https://github.com/brunogiraudo03/Gestor_Universitario)
