@@ -76,7 +76,7 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
     };
 
     return (
-        <div className="card my-4">
+        <div className="card my-4 plan-form-card">
             <div className="card-header bg-danger text-white"> 
                 <h3 className="mb-0">{planToEdit ? 'Modificar Materia' : 'Agregar Nueva Materia'}</h3>
             </div>

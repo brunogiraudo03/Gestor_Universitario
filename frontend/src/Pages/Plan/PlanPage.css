@@ -1,0 +1,91 @@
+/* src/pages/Plan/PlanPage.css */
+
+/* --- Estilos para la Vista Principal (Tabla) --- */
+
+/* Contenedor principal que tiene la búsqueda y la tabla */
+.plan-container-card .card-header {
+  background-color: #212529 !important; /* Negro/Gris oscuro de Bootstrap */
+  color: #ffffff;
+  border-bottom: 1px solid #495057;
+}
+
+/* El cuerpo de esa tarjeta contenedora */
+.plan-container-card .card-body {
+  background-color: #212529; /* Negro/Gris oscuro de Bootstrap */
+  color: #ffffff;
+  border: none; /* Quitamos el borde blanco que tenías antes */
+}
+
+/* Títulos de cada año (Ej: "Primer Año") */
+.plan-container-card h4 {
+  color: #ffffff; /* Letras blancas para los títulos */
+}
+
+/* --- Estilos para los Botones de Búsqueda --- */
+
+/* Botón "Buscar" - Azul sutil */
+.btn-search-custom {
+  background-color: #0d6efd; /* Azul primario de Bootstrap */
+  border-color: #0d6efd;
+  color: #fff;
+}
+.btn-search-custom:hover {
+  background-color: #0b5ed7; /* Un azul un poco más oscuro al pasar el mouse */
+  border-color: #0a58ca;
+}
+
+/* Botón "Limpiar" - Rojizo sutil */
+.btn-clear-custom {
+  background-color: #6c757d; /* Gris secundario de Bootstrap */
+  border-color: #6c757d;
+  color: #fff;
+}
+.btn-clear-custom:hover {
+  background-color: #5c636a;
+  border-color: #565e64;
+}
+
+
+/* --- Estilos para la Tabla de Materias --- */
+
+/* Hacemos la tabla clara, como pediste */
+.plan-table {
+  background-color: #f8f9fa; /* Blanco tirando a gris, muy claro */
+  color: #212529; /* Letras negras bien visibles */
+}
+
+/* El encabezado de la tabla (Número, Nombre, etc.) */
+.plan-table thead {
+  background-color: #e9ecef; /* Un gris un poco más oscuro para diferenciar */
+}
+
+
+/* --- Estilos para el Formulario de Agregar/Modificar Materia --- */
+
+/* Tarjeta contenedora del formulario */
+.plan-form-card, .plan-form-card .card-body {
+  background-color: #f8f9fa; /* El mismo blanco/gris claro de la tabla */
+  color: #212529; /* Letras negras */
+  border: none; /* Sin bordes raros */
+}
+
+/* Cabecera del formulario (la dejamos roja como está) */
+.plan-form-card .card-header {
+  background-color: #dc3545 !important; /* Rojo de Bootstrap */
+  color: white;
+}
+
+/* Inputs y Selects dentro del formulario */
+.plan-form-card .form-control,
+.plan-form-card .form-select {
+  background-color: #ffffff; /* Fondo blanco para que sea fácil escribir */
+  color: #212529; /* Texto negro */
+  border: 1px solid #ced4da; /* Borde estándar de Bootstrap */
+}
+
+/* Estilo para los inputs cuando tienen el foco (al hacer clic) */
+.plan-form-card .form-control:focus,
+.plan-form-card .form-select:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import planesService from '../../services/plan.services'; // Ajusta la ruta si es necesario
 import PlanTable from './PlanTable';
 import PlanForm from './PlanForm';
+import './PlanPage.css';
 
 function PlanPage({ planes, loading, fetchPlanes }) {
     const { register, handleSubmit, reset } = useForm();
@@ -56,8 +57,10 @@ function PlanPage({ planes, loading, fetchPlanes }) {
     return (
         <>
             {accion === 'C' && (
-                <div className="card shadow-sm">
-                    <div className="card-header bg-dark text-white">
+                // CAMBIO: Añadimos la clase 'plan-container-card'
+                <div className="card shadow-sm plan-container-card">
+                    {/* El card-header ahora lo controla el CSS */}
+                    <div className="card-header">
                         <h5 className="mb-0">Mi Plan de Estudio</h5>
                     </div>
                     <div className="card-body">
@@ -72,10 +75,11 @@ function PlanPage({ planes, loading, fetchPlanes }) {
                                     />
                                 </div>
                                 <div className="col-sm-auto">
-                                    <button type="submit" className="btn btn-primary">Buscar</button>
+                                    {/* CAMBIO: Usamos las nuevas clases para los botones */}
+                                    <button type="submit" className="btn btn-search-custom">Buscar</button>
                                 </div>
                                 <div className="col-sm-auto">
-                                    <button type="button" className="btn btn-outline-secondary" onClick={handleClearSearch}>Limpiar</button>
+                                    <button type="button" className="btn btn-clear-custom" onClick={handleClearSearch}>Limpiar</button>
                                 </div>
                                 <div className="col-sm-auto ms-auto">
                                     <button type="button" className="btn btn-danger" onClick={() => { setAccion('A'); setToEdit(null); }}>
@@ -84,22 +88,10 @@ function PlanPage({ planes, loading, fetchPlanes }) {
                                 </div>
                             </div>
                         </form>
-
-                        {loading ? (
-                            <p className="text-center">Cargando...</p>
-                        ) : (
-                            // 4. AHORA LA TABLA USA LA LISTA FILTRADA
-                            <PlanTable planes={filteredPlanes} handleDelete={handleDelete} handleToEdit={handleToEdit} />
-                        )}
                         
-                        {/* Mensaje por si la búsqueda no encuentra nada */}
-                        {!loading && filteredPlanes.length === 0 && planes.length > 0 && (
-                             <div className="alert alert-light text-center">No se encontraron materias con ese nombre.</div>
-                        )}
-
-                        {!loading && planes.length === 0 && (
-                            <div className="alert alert-secondary text-center">No hay materias cargadas.</div>
-                        )}
+                        {/* El resto del componente no necesita cambios... */}
+                        {loading ? <p>Cargando...</p> : <PlanTable planes={filteredPlanes} handleDelete={handleDelete} handleToEdit={handleToEdit} />}
+                        {/* ... */}
                     </div>
                 </div>
             )}

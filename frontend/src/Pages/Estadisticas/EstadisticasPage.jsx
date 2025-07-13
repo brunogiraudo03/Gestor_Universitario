@@ -9,13 +9,12 @@ ChartJS.register(ArcElement, Tooltip, Legend);
 // Componente principal de la página de estadísticas
 function EstadisticasPage({ planes, loading }) {
 
-  // Usamos useMemo para que los cálculos complejos solo se hagan cuando los 'planes' cambien
+  // Lógica de cálculo de estadísticas
   const { statsPorAnio, statsGenerales } = useMemo(() => {
     if (!planes || planes.length === 0) {
       return { statsPorAnio: [], statsGenerales: {} };
     }
 
-    // 1. AGRUPAR MATERIAS POR AÑO
     const agrupados = planes.reduce((acc, plan) => {
       const año = plan.año;
       if (!acc[año]) {
@@ -25,7 +24,6 @@ function EstadisticasPage({ planes, loading }) {
       return acc;
     }, {});
 
-    // 2. CALCULAR ESTADÍSTICAS PARA CADA AÑO
     const statsAnuales = Object.keys(agrupados).map(año => {
       const materiasDelAnio = agrupados[año];
       const total = materiasDelAnio.length;
@@ -37,20 +35,17 @@ function EstadisticasPage({ planes, loading }) {
 
       materiasDelAnio.forEach(materia => {
         const nota = materia.nota;
-        if (nota === null || nota === undefined || nota === '-') {
+        if (nota === null || nota === undefined || nota === '' || nota === '-') {
           sinCursar++;
         } else if (nota >= 6) {
           aprobadas++;
-        } else if (nota >= 4 && nota <= 5) {
+        } else if (nota >= 4 && nota < 6) {
           regulares++;
-        } else if (nota <= 3) {
+        } else if (nota < 4) {
           desaprobadas++;
         }
       });
       
-      const porcentajeCompletado = total > 0 ? ((aprobadas / total) * 100) : 0;
-      const porcentajeRestante = 100 - porcentajeCompletado;
-
       return {
         año,
         total,
@@ -58,11 +53,9 @@ function EstadisticasPage({ planes, loading }) {
         regulares,
         desaprobadas,
         sinCursar,
-        porcentajeRestante
       };
     });
 
-    // 3. CALCULAR ESTADÍSTICAS GENERALES
     const totalCarrera = planes.length;
     const aprobadasCarrera = planes.filter(p => p.nota >= 6).length;
     const porcentajeCarrera = totalCarrera > 0 ? ((aprobadasCarrera / totalCarrera) * 100) : 0;
@@ -79,14 +72,13 @@ function EstadisticasPage({ planes, loading }) {
   }
 
   return (
-    <div>
-      <div className="card shadow-sm mb-4">
-        <div className="card-header bg-dark text-white">
+    <div className="container py-4">
+      <div className="card shadow-sm mb-4 bg-dark text-white">
+        <div className="card-body text-center">
           <h4 className="mb-0">Estadísticas de la Carrera</h4>
         </div>
       </div>
       
-      {/* Layout de 2 columnas para las tarjetas de cada año */}
       <div className="row">
         {statsPorAnio.sort((a,b) => a.año - b.año).map(stats => (
           <div key={stats.año} className="col-lg-6 mb-4">
@@ -95,13 +87,12 @@ function EstadisticasPage({ planes, loading }) {
         ))}
       </div>
 
-      {/* Tarjeta final con la barra de progreso general */}
       <CarreraCard stats={statsGenerales} />
     </div>
   );
 }
 
-// Componente para la tarjeta de cada año (para mantener el código limpio)
+
 function AnioCard({ stats }) {
   const data = {
     labels: ['Aprobadas', 'Regulares', 'Desaprobadas', 'Sin Cursar'],
@@ -110,10 +101,10 @@ function AnioCard({ stats }) {
         label: '# de Materias',
         data: [stats.aprobadas, stats.regulares, stats.desaprobadas, stats.sinCursar],
         backgroundColor: [
-          'rgba(40, 167, 69, 0.7)', // Verde para aprobadas
-          'rgba(255, 193, 7, 0.7)',  // Amarillo para regulares
-          'rgba(220, 53, 69, 0.7)',  // Rojo para desaprobadas
-          'rgba(108, 117, 125, 0.7)', // Gris para sin cursar
+          'rgba(40, 167, 69, 0.7)',
+          'rgba(255, 193, 7, 0.7)',
+          'rgba(220, 53, 69, 0.7)',
+          'rgba(108, 117, 125, 0.7)',
         ],
         borderColor: [
           '#ffffff',
@@ -125,21 +116,56 @@ function AnioCard({ stats }) {
 
   const yearToText = { 1: 'Primer Año', 2: 'Segundo Año', 3: 'Tercer Año', 4: 'Cuarto Año', 5: 'Quinto Año' };
 
+  const materiasPorAprobar = stats.total - stats.aprobadas;
+
+  const renderMensajeProgreso = () => {
+    if (stats.total === 0) {
+      return null;
+    }
+    
+    if (materiasPorAprobar === 0) {
+      return (
+        <p className="fw-bold fs-5 text-success">
+          <i className="fas fa-trophy me-2"></i>
+          ¡Año completado! 🎉
+        </p>
+      );
+    }
+    
+    if (stats.aprobadas === 0) {
+      return (
+        <p className="fw-bold fs-5 text-warning">
+          <i className="fas fa-book-reader me-2"></i>
+          Aún no tienes materias aprobadas este año.
+        </p>
+      );
+    }
+
+    const textoMaterias = materiasPorAprobar === 1 ? 'materia' : 'materias';
+    return (
+      <p className="fw-bold fs-5 text-info">
+        <i className="fas fa-pencil-alt me-2"></i>
+        Te {materiasPorAprobar === 1 ? 'queda' : 'quedan'} {materiasPorAprobar} {textoMaterias} por aprobar.
+      </p>
+    );
+  };
+
+
   return (
     <div className="card h-100 shadow-sm">
       <div className="card-header bg-dark text-white">
         <h5 className="mb-0">{yearToText[stats.año] || `Año ${stats.año}`}</h5>
       </div>
-      <div className="card-body">
-        <div className="row align-items-center">
+      <div className="card-body d-flex flex-column">
+        <div className="row align-items-center flex-grow-1">
           <div className="col-md-7">
+            {renderMensajeProgreso()}
+            <hr />
             <p className="mb-1"><strong>Aprobadas:</strong> {stats.aprobadas} de {stats.total}</p>
             <p className="mb-1"><strong>Regulares:</strong> {stats.regulares}</p>
             <p className="mb-1"><strong>Desaprobadas:</strong> {stats.desaprobadas}</p>
-            <hr />
-            <p className="fw-bold fs-5">Te queda por aprobar el {stats.porcentajeRestante.toFixed(1)}%</p>
           </div>
-          <div className="col-md-5">
+          <div className="col-md-5 d-flex align-items-center justify-content-center">
             <Doughnut data={data} options={{ responsive: true, maintainAspectRatio: true }} />
           </div>
         </div>
@@ -148,7 +174,6 @@ function AnioCard({ stats }) {
   );
 }
 
-// Componente para la tarjeta final de la carrera
 function CarreraCard({ stats }) {
   return (
     <div className="card shadow-sm mt-4">

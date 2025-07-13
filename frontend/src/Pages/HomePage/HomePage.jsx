@@ -43,10 +43,10 @@ function HomePage() {
       
       {/* SECCIÓN DE BIENVENIDA */}
       <div className="mb-5">
-        <h1 className="display-3 fw-bold" style={{ color: 'var(--color-header-bg)' }}>
+        <h1 className="display-3 fw-bold header-title-bordered">
           Tu Carrera, Simplificada
         </h1>
-        <p className="lead fs-4 text-muted mt-3">
+        <p className="lead fs-4  mt-3">
           Selecciona una herramienta para empezar a organizar tu vida universitaria.
         </p>
       </div>

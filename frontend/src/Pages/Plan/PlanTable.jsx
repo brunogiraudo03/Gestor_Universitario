@@ -20,8 +20,8 @@ function PlanTable({ planes, handleDelete, handleToEdit }) {
                     {/* Un título simple para cada año */}
                     <h4 className="mb-3">{yearToText[año] || `Año ${año}`}</h4>
                     <div className="table-responsive rounded border">
-                        <table className="table table-striped table-hover align-middle mb-0 table-dark">
-                            <thead className="table-light">
+                        <table className="table table-striped table-hover align-middle mb-0 plan-table">
+                            <thead>
                                 <tr>
                                     <th>Número</th>
                                     <th>Nombre</th>
