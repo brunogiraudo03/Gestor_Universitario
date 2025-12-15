@@ -1,20 +1,20 @@
 // src/App.jsx
-import React, { useState, useEffect } from 'react'; // 1. Importamos hooks
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import HomePage from './Pages/HomePage/HomePage';
 import PlanPage from './Pages/Plan/PlanPage';
 import EstadisticasPage from './Pages/Estadisticas/EstadisticasPage';
-import planesService from './services/plan.services'; // 3. Importamos el servicio
+import planesService from './services/plan.services';
+import ElectivasPage from './Pages/Electivas/ElectivasPage'; 
+
 import './App.css';
 
 function App() {
-  // 4. El estado ahora vive en el componente padre
   const [planes, setPlanes] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 5. La función para obtener los datos también vive aquí
   const fetchPlanes = async () => {
     try {
       setLoading(true);
@@ -27,7 +27,6 @@ function App() {
     }
   };
 
-  // 6. Obtenemos los datos una sola vez cuando la app se carga
   useEffect(() => {
     fetchPlanes();
   }, []);
@@ -41,17 +40,18 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             
-            {/* 7. Pasamos los datos y funciones como props a los hijos que los necesiten */}
             <Route 
               path="/plan" 
               element={<PlanPage planes={planes} loading={loading} fetchPlanes={fetchPlanes} />} 
             />
+            
+            {/* Aquí es donde usas el componente, por eso debe estar importado arriba */}
+            <Route path="/electivas" element={<ElectivasPage />} />
+
             <Route 
               path="/estadisticas" 
               element={<EstadisticasPage planes={planes} loading={loading} />} 
             />
-
-            {/* ...otras rutas... */}
           </Routes>
         </main>
       </div>

@@ -1,70 +1,87 @@
-# Gestor Universitario 🎓
+# 🎓 Gestor Universitario
 
-Un dashboard web moderno y funcional diseñado para ayudar a los estudiantes universitarios a organizar su carrera, monitorear su progreso y gestionar sus tareas académicas de manera eficiente.
+![Estado del Proyecto](https://img.shields.io/badge/Estado-Terminado%20(v1.0)-success)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-blue)
 
-<img width="1316" height="652" alt="image" src="https://github.com/user-attachments/assets/257f4508-cfdb-4bae-bf9e-8ce5e0cc3335" />
+Un sistema integral Full Stack diseñado para ayudar a estudiantes universitarios a organizar su carrera académica. Permite gestionar planes de estudio, realizar seguimiento de materias electivas, monitorear créditos y visualizar el progreso mediante estadísticas gráficas en tiempo real.
 
 ---
 
-## Descripción General
+## 🚀 Características Principales
 
-Este proyecto nace de la necesidad de centralizar todas las herramientas que un estudiante necesita en un solo lugar. Desde el seguimiento de materias y notas en el plan de estudio hasta la gestión de fechas importantes y tareas, Gestor Universitario busca ser el compañero digital definitivo para una vida académica organizada y exitosa.
+* **📚 Gestión del Plan de Estudio:** CRUD completo (Crear, Leer, Actualizar, Borrar) de materias. Permite registrar estado (cursada/aprobada), notas, carga horaria y correlatividades.
+* **⭐ Módulo de Electivas:** Sección dedicada para gestionar materias optativas y seguimiento de **créditos académicos**.
+* **📊 Dashboard Estadístico:** Visualización de datos con **Chart.js**. Calcula automáticamente:
+    * Promedio general y por año.
+    * Porcentaje de la carrera completado.
+    * Gráficos de distribución de estados (Aprobadas vs. Regulares vs. Pendientes).
+* **🔍 Búsqueda y Filtrado:** Buscador en tiempo real para localizar materias rápidamente.
+* **🎨 Interfaz UI/UX Moderna:** Diseño responsivo utilizando **Bootstrap 5** personalizado con **Sass**, con modo oscuro y navegación intuitiva.
 
-La aplicación está construida con un stack de tecnologías modernas, enfocada en una experiencia de usuario rápida, reactiva y agradable.
+---
 
-## Características Principales
+## 🛠️ Tecnologías Utilizadas
 
-* **📈 Dashboard de Estadísticas:** Visualiza tu progreso con gráficos y estadísticas detalladas por año y de la carrera completa.
-* **📚 Plan de Estudio Interactivo:** Gestiona todas las materias de tu plan, incluyendo notas, modalidades y carga horaria.
-* **🔍 Búsqueda y Filtrado:** Encuentra materias rápidamente dentro de tu plan de estudio.
-* **🎨 Interfaz Moderna:** Un diseño limpio y profesional con una paleta de colores cohesiva y un layout responsive.
-* **🚀 Arquitectura Escalable:** El código está organizado por funcionalidades (`features`/`pages`) para facilitar el mantenimiento y la futura expansión del proyecto.
+Este proyecto demuestra la implementación de una arquitectura **Full Stack** robusta:
 
-## Tecnologías Utilizadas
+### Frontend (Cliente)
+* ![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=white&style=flat) **React 19:** Construcción de interfaces dinámicas basada en componentes.
+* ![Vite](https://img.shields.io/badge/-Vite-646CFF?logo=vite&logoColor=white&style=flat) **Vite:** Entorno de desarrollo ultrarrápido.
+* ![Bootstrap](https://img.shields.io/badge/-Bootstrap%205-7952B3?logo=bootstrap&logoColor=white&style=flat) **Bootstrap 5 + Sass:** Estilizado y personalización avanzada de temas CSS.
+* **React Router:** Manejo de rutas y navegación SPA (Single Page Application).
+* **React Hook Form:** Gestión eficiente y validación de formularios.
+* **Axios:** Consumo de API REST.
+* **Chart.js:** Visualización de datos y gráficas.
 
-* **Frontend:**
-    * [React](https://react.dev/)
-    * [Vite](https://vitejs.dev/)
-    * [React Router](https://reactrouter.com/)
-* **Estilos:**
-    * [Bootstrap 5](https://getbootstrap.com/)
-    * [Sass](https://sass-lang.com/)
-    * [Font Awesome](https://fontawesome.com/) (para los íconos)
-* **Gráficos:**
-    * [Chart.js](https://www.chartjs.org/)
+### Backend (Servidor)
+* ![NodeJS](https://img.shields.io/badge/-Node.js-339933?logo=node.js&logoColor=white&style=flat) **Node.js:** Entorno de ejecución para el servidor.
+* ![Express](https://img.shields.io/badge/-Express.js-000000?logo=express&logoColor=white&style=flat) **Express:** Framework para la creación de la API RESTful.
+* ![Sequelize](https://img.shields.io/badge/-Sequelize-52B0E7?logo=sequelize&logoColor=white&style=flat) **Sequelize ORM:** Manejo de modelos y consultas a la base de datos.
+* ![SQLite](https://img.shields.io/badge/-SQLite-003B57?logo=sqlite&logoColor=white&style=flat) **SQLite:** Base de datos relacional ligera y local.
 
-## Puesta en Marcha
+---
 
-Para correr este proyecto de forma local, sigue estos pasos:
+## ⚙️ Instalación y Puesta en Marcha
 
-1.  **Clona el repositorio**
-    ```sh
-    git clone [https://github.com/brunogiraudo03/Gestor_Universitario.git](https://github.com/brunogiraudo03/Gestor_Universitario.git)
-    ```
-2.  **Navega a la carpeta del frontend**
-    ```sh
-    cd Gestor_Universitario/frontend
-    ```
-3.  **Instala las dependencias**
-    ```sh
-    npm install
-    ```
-4.  **Inicia el servidor de desarrollo**
-    ```sh
-    npm run dev
-    ```
-    La aplicación estará disponible en `http://localhost:5173`.
+Este proyecto utiliza una arquitectura separada (Frontend y Backend), por lo que requiere dos terminales ejecutándose simultáneamente.
 
-## Planes a Futuro (Roadmap)
+### 1. Clonar el repositorio
+```bash
+git clone [https://github.com/brunogiraudo03/Gestor_Universitario.git](https://github.com/brunogiraudo03/Gestor_Universitario.git)
+cd Gestor_Universitario
 
-* [ ] **Autenticación de Usuarios:** Implementación de un sistema de registro y login con JWT.
-* [ ] **Backend y Base de Datos:** Crear una API con Node.js/Express y una base de datos para persistir los datos de cada usuario.
-* [ ] **Calendario Académico:** Una sección para agendar fechas de parciales, finales y entregas.
-* [ ] **Gestión de Tareas:** Un "To-Do List" para organizar las tareas pendientes.
-* [ ] **Técnica Pomodoro:** Integrar un temporizador para ayudar a la concentración durante el estudio.
+### 2. Configurar el Backend (Servidor)
+Abre una terminal y navega a la carpeta del backend:
 
-## Contacto
+```bash
+cd backend
+npm install        # Instalar dependencias
+npm run dev        # Iniciar servidor (corre en puerto 3000)
 
-Bruno Giraudo - Brunousain03@gmail.com
+Deberías ver: "Servidor escuchando en http://localhost:3000" y "Conectado a la base de datos".
 
-Link del Proyecto: [https://github.com/brunogiraudo03/Gestor_Universitario](https://github.com/brunogiraudo03/Gestor_Universitario)
+### 3. Configurar el Frontend (Cliente)
+Abre otra terminal y navega a la carpeta del frontend:
+
+´´´bash
+cd frontend
+npm install        # Instalar dependencias
+npm run dev        # Iniciar Vite (corre en puerto 5173)
+
+Abre tu navegador en http://localhost:5173 para usar la aplicación
+
+
+###🧠 Aprendizajes Clave
+El desarrollo de este proyecto me permitió consolidar conocimientos técnicos avanzados en:
+
+Arquitectura MVC y API REST: Diseño de un backend estructurado separando Rutas, Controladores (Servicios) y Modelos de datos para una base de código escalable.
+
+Manejo de Estado en React: Implementación de Hooks (useState, useEffect) y useMemo para optimizar cálculos costosos en el dashboard de estadísticas.
+
+Integración Front-Back: Comunicación asíncrona fluida entre cliente y servidor mediante Axios, gestionando métodos HTTP (GET, POST, PUT, DELETE).
+
+ORM y SQL: Modelado de tablas relacionales con Sequelize y sincronización automática con SQLite, manejando tipos de datos y restricciones.
+
+Componentización y Reutilización: Refactorización de código para crear componentes modulares (ej: PlanTable, ElectivasForm) y Hooks personalizados como useForm.
+
+**Desarrollado por Bruno Giraudo - Estudiante de Ingeniería en Sistemas**

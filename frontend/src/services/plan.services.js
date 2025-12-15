@@ -12,7 +12,7 @@ const obtenerPlanes = async () => {
 }
 
 const buscarPlanPorMateria = async (nombre) => {
-    if (!nombre) return []; // Evitar consulta vacía
+    if (!nombre) return []; 
     try {
         const response = await axios.get(`${API_URL}/buscar/${nombre}`);
         return response.data;

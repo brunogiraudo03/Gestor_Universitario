@@ -12,15 +12,12 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
         reset
     } = useForm();
 
-    // Opciones para el select de año (1 al 5)
     const yearOptions = Array.from({ length: 5 }, (_, i) => i + 1);
 
-    // Opciones para el select de nota (1 al 10)
     const notaOptions = Array.from({ length: 10 }, (_, i) => i + 1);
 
     useEffect(() => {
         if (planToEdit) {
-            // Si estamos editando, prellenamos el formulario con los datos del plan existente
             setValue('nro_materia', planToEdit.nro_materia);
             setValue('año', planToEdit.año);
             setValue('nombre', planToEdit.nombre);
@@ -28,34 +25,30 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
             setValue('regulares', planToEdit.regulares);
             setValue('aprobadas', planToEdit.aprobadas);
             setValue('carga_horaria', planToEdit.carga_horaria);
-            // La nota puede ser null o undefined, por lo que la establecemos directamente
             setValue('nota', planToEdit.nota);
         } else {
-            // Si estamos creando uno nuevo, reseteamos el formulario y aseguramos valores por defecto
             reset();
-            setValue('modalidad', ''); // Asegura que el select de modalidad inicie en la opción vacía
-            setValue('año', ''); // Asegura que el select de año inicie en la opción vacía
-            setValue('nota', ''); // Asegura que el select de nota inicie en la opción vacía
+            setValue('modalidad', ''); 
+            setValue('año', ''); 
+            setValue('nota', ''); 
         }
     }, [planToEdit, reset, setValue]);
 
     const onSubmit = async (data) => {
         try {
-            // Convertir la nota a null si está vacía para evitar enviar '' al backend
+            
             const dataToSend = {
                 ...data,
-                nota: data.nota === '' ? null : data.nota // Si la nota está vacía, la enviamos como null
+                nota: data.nota === '' ? null : data.nota 
             };
 
             if (planToEdit) {
-                // Modo Actualizar
                 const response = await planesService.actualizarPlan(dataToSend.nro_materia, dataToSend);
                 if (response) {
                     alert('Plan de estudio actualizado correctamente!');
                     await onSave();
                 }
             } else {
-                // Modo Crear
                 const response = await planesService.crearPlan(dataToSend);
                 if (response) {
                     alert('Plan de estudio creado correctamente!');
@@ -94,7 +87,7 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
                                 min: { value: 1, message: 'Debe ser un número positivo' },
                                 valueAsNumber: true
                             })}
-                            readOnly={!!planToEdit} // <--- Esta línea hace la magia
+                            readOnly={!!planToEdit}  
                           />
                             {errors.nro_materia && <div className="invalid-feedback">{errors.nro_materia.message}</div>}
                         </div>
@@ -105,7 +98,7 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
                                 id="año"
                                 {...register('año', {
                                     required: 'El año es requerido',
-                                    valueAsNumber: true, // Importante para que el value del select sea un número
+                                    valueAsNumber: true, 
                                     validate: value => value !== '' || 'Seleccione un año válido'
                                 })}
                             >
@@ -194,13 +187,10 @@ function PlanForm({ onSave, onCancel, planToEdit }) {
                                 id="nota"
                                 className={`form-select ${errors.nota ? 'is-invalid' : ''}`}
                                 {...register('nota', {
-                                    // ELIMINAMOS 'required' Y USAMOS 'validate' PARA PERMITIR CAMPO VACÍO
                                     validate: value => {
-                                        // Si el campo está vacío o es el string vacío, es válido
                                         if (value === null || value === undefined || value === '') {
                                             return true;
                                         }
-                                        // Si tiene un valor, validamos que sea un número entre 1 y 10
                                         const numericValue = Number(value);
                                         return (numericValue >= 1 && numericValue <= 10) || 'La nota debe ser entre 1 y 10';
                                     }

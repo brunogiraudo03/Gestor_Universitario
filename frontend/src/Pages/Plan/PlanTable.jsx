@@ -13,7 +13,6 @@ function PlanTable({ planes, handleDelete, handleToEdit }) {
     }, [planes]);
 
     return (
-        // Ya no usamos <div className="card"> aquí
         <div>
             {Object.keys(planesAgrupados).sort((a, b) => a - b).map(año => (
                 <div key={año} className="mb-5">

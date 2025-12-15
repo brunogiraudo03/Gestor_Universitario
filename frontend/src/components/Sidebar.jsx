@@ -23,22 +23,12 @@ function Sidebar() {
           </NavLink>
         </li>
         <li className="nav-item">
-          <NavLink to="/calendario" className="nav-link">
-            <i className="fas fa-calendar-alt fa-fw me-2"></i>Calendario
-          </NavLink>
-        </li>
-        <li className="nav-item">
           <NavLink to="/estadisticas" className="nav-link">
             <i className="fas fa-chart-bar fa-fw me-2"></i>Estadísticas
           </NavLink>
         </li>
       </ul>
       <hr/>
-      <div>
-        <a href="#" className="nav-link">
-          <i className="fas fa-sign-out-alt fa-fw me-2"></i>Cerrar Sesión
-        </a>
-      </div>
     </aside>
   );
 }

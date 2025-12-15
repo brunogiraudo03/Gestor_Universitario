@@ -1,51 +1,46 @@
 
-import { DataTypes } from 'sequelize'; // corregido: se escribe con mayúscula la D
+import { DataTypes } from 'sequelize'; 
 
-// Definimos los atributos del modelo Plan_estudio
 const planAtributtes = {
   nro_materia: {
-    type: DataTypes.INTEGER,           // Otro entero
+    type: DataTypes.INTEGER,           
     primaryKey: true                   
   },
   año: {
-    type: DataTypes.INTEGER,           // Tipo entero
+    type: DataTypes.INTEGER,          
     allowNull: false
   },
   nombre: {
-    type: DataTypes.TEXT,    // Texto largo (por ejemplo: "Matemática Discreta")
+    type: DataTypes.TEXT,    
     allowNull: false
   },
   modalidad: {
-    type: DataTypes.TEXT,              // Texto: puede ser "Presencial", "Virtual", etc.
+    type: DataTypes.TEXT,             
     allowNull: false
   },
   regulares: {
-    type: DataTypes.TEXT,              // Podés usar esto para guardar materias correlativas regularizadas
-    //  permite nulos
+    type: DataTypes.TEXT,              
     allowNull: true
   },
   aprobadas: {
-    type: DataTypes.TEXT,              // Lo mismo, pero para correlativas aprobadas
+    type: DataTypes.TEXT,             
     //  permite nulos
     allowNull: true
   },
   carga_horaria: {
-    type: DataTypes.INTEGER,           // Total de horas de la materia (ej: 64)
+    type: DataTypes.INTEGER,           
   },
   nota: {
-    type: DataTypes.INTEGER,           // Nota final (puede ser null si no está rendida)
+    type: DataTypes.INTEGER,           
     //  permite nulos
     allowNull: true
   }
 };
 
 const planMethods = {
-    // Definimos los métodos del modelo Plan_estudio
-    // Estos métodos se ejecutan cuando se hace una operación en el modelo Plan_estudio
 };
 
 const planModel = {
-    // Definimos un objeto con atributros y metodos
     planAtributtes,
     planMethods
 };

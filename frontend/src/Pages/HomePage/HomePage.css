@@ -1,22 +1,15 @@
 /* src/pages/HomePage/HomePage.css */
 
-/* ¡NUEVO! - Paso 1: Importar las fuentes desde Google Fonts */
-/* Esta línea debe ir SIEMPRE al principio del archivo CSS. */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Nosifier&display=swap');
 
-/* ¡NUEVO! - Paso 2: Establecer la fuente base para toda la página */
-/* Al aplicarla al 'body', todos los elementos heredarán esta fuente por defecto. */
+
 body {
   font-family: 'Montserrat', sans-serif;
 }
 
-/* --- ESTILOS PARA LA CABECERA --- */
-
-/* Estilo para el título principal H1 */
 .header-title-bordered {
-  /* ¡NUEVO! - Paso 3: Aplicar la fuente especial para el título */
-  font-family: 'Nosifier', cursive; /* Usamos Nosifier y un respaldo genérico 'cursive' */
-  font-size: 4.5rem; /* Aumentamos un poco el tamaño para que la fuente luzca más */
+  font-family: 'Nosifier', cursive; 
+  font-size: 4.5rem; 
   color: white;
   text-shadow: 
     -1.5px -1.5px 0 #ff0000,  
@@ -25,35 +18,32 @@ body {
      1.5px  1.5px 0 #ff0000;
 }
 
-/* Estilo para el subtítulo, lo hacemos blanco */
+
 .lead.fs-4 {
   color: #ffffff;
 }
 
 
-/* --- ESTILOS PARA LAS TARJETAS DE NAVEGACIÓN --- */
-
-/* Estilo base para el contenedor del link */
 .nav-card {
   text-decoration: none;
   display: block;
   transition: all 0.3s ease-in-out;
 }
 
-/* El efecto al pasar el mouse por encima */
+
 .nav-card:hover {
   transform: translateY(-8px);
   box-shadow: 0 8px 25px rgba(255, 0, 0, 0.2);
 }
 
-/* Estilos para la tarjeta en sí */
+
 .nav-card .card {
   background-color: #121212;
   color: #ffffff;
   border: 1px solid #333;
 }
 
-/* Estilo para el ícono dentro de la tarjeta */
+
 .nav-card .card-icon {
   font-size: 3rem;
   color: var(--color-header-bg);
