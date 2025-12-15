@@ -46,33 +46,28 @@ Este proyecto demuestra la implementación de una arquitectura **Full Stack** ro
 Este proyecto utiliza una arquitectura separada (Frontend y Backend), por lo que requiere dos terminales ejecutándose simultáneamente.
 
 ### 1. Clonar el repositorio
-```bash
 git clone [https://github.com/brunogiraudo03/Gestor_Universitario.git](https://github.com/brunogiraudo03/Gestor_Universitario.git)
 cd Gestor_Universitario
 
-2- Configurar el Backend (Servidor)
+### 2- Configurar el Backend (Servidor)
 Abre una terminal y navega a la carpeta del backend:
 
-```bash
 cd backend
 npm install        # Instalar dependencias
 npm run dev        # Iniciar servidor (corre en puerto 3000)
 
 Deberías ver: "Servidor escuchando en http://localhost:3000" y "Conectado a la base de datos".
 
-3- Configurar el Frontend (Cliente)
+### 3- Configurar el Frontend (Cliente)
 Abre otra terminal y navega a la carpeta del frontend:
 
-´´´bash
 cd frontend
 npm install        # Instalar dependencias
 npm run dev        # Iniciar Vite (corre en puerto 5173)
 
 Abre tu navegador en http://localhost:5173 para usar la aplicación
 
-'''
-
-###🧠 Aprendizajes Clave
+### 🧠 Aprendizajes Clave 
 El desarrollo de este proyecto me permitió consolidar conocimientos técnicos avanzados en:
 
 Arquitectura MVC y API REST: Diseño de un backend estructurado separando Rutas, Controladores (Servicios) y Modelos de datos para una base de código escalable.
